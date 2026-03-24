@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 224 76% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 10%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 20% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 76% 53%;
+
+    --radius: 0.625rem;
+
+    --sidebar-background: 220 20% 10%;
+    --sidebar-foreground: 220 14% 96%;
+    --sidebar-primary: 224 76% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 16%;
+    --sidebar-accent-foreground: 220 14% 96%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 224 76% 53%;
+    --sidebar-muted: 220 9% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .status-draft {
+    @apply bg-muted text-muted-foreground;
+  }
+  .status-active {
+    @apply bg-primary/10 text-primary;
+  }
+  .status-completed {
+    @apply bg-[hsl(var(--success))]/10 text-[hsl(var(--success))];
+  }
+  .status-cancelled {
+    @apply bg-destructive/10 text-destructive;
+  }
+  .status-pending {
+    @apply bg-[hsl(var(--warning))]/10 text-[hsl(var(--warning))];
+  }
+  .status-paid {
+    @apply bg-[hsl(var(--success))]/10 text-[hsl(var(--success))];
+  }
+  .status-overdue {
+    @apply bg-destructive/10 text-destructive;
+  }
+  .status-in_progress {
+    @apply bg-primary/10 text-primary;
+  }
+  .stat-card {
+    @apply bg-card rounded-xl p-6 shadow-sm border border-border/50;
+  }
+}

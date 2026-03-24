@@ -1,0 +1,44 @@
+# Frontend (Node.js)
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+.cache/
+.vite/
+
+# Backend (Maven)
+target/
+.classpath
+.project
+.settings/
+.vscode/
+.idea/
+*.iml
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+.env
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+dist/
+out/
+

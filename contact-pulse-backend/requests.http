@@ -1,0 +1,161 @@
+### ─── Auth ─────────────────────────────────────────────
+
+### Register
+POST http://localhost:8081/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Anas",
+  "email": "anas@contractpulse.com",
+  "password": "password123"
+}
+
+### Login
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "anas@contractpulse.com",
+  "password": "password123"
+}
+### TEST Login
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "name": "Anas",
+  "email": "anas@test.com",
+  "password": "temp"
+}
+
+### ─── Clients ────────────────────────────────────────────
+
+### Create client
+POST http://localhost:8081/api/clients
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Ahmed Khan",
+  "email": "ahmed@example.com",
+  "phone": "0300-1234567"
+}
+
+### Get all clients
+GET http://localhost:8081/api/clients
+Authorization: Bearer {{token}}
+
+### Get client by ID
+GET http://localhost:8081/api/clients/{{clientId}}
+Authorization: Bearer {{token}}
+
+### Update client
+PUT http://localhost:8081/api/clients/{{clientId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Ahmed Khan Updated",
+  "email": "ahmed.updated@example.com",
+  "phone": "0300-9999999"
+}
+
+### Delete client
+DELETE http://localhost:8081/api/clients/{{clientId}}
+Authorization: Bearer {{token}}
+
+
+### ─── Contracts ──────────────────────────────────────────
+
+### Create contract
+POST http://localhost:8081/api/contracts
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "E-Commerce Website",
+  "description": "Full stack website for clothing brand",
+  "clientId": "{{clientId}}",
+  "totalValue": 150000.00,
+  "startDate": "2025-04-01",
+  "endDate": "2025-06-30"
+}
+
+### Get all contracts
+GET http://localhost:8081/api/contracts
+Authorization: Bearer {{token}}
+
+### Get contract by ID
+GET http://localhost:8081/api/contracts/{{contractId}}
+Authorization: Bearer {{token}}
+
+### Update contract status
+PATCH http://localhost:8081/api/contracts/{{contractId}}/status?status=ACTIVE
+Authorization: Bearer {{token}}
+
+### Delete contract
+DELETE http://localhost:8081/api/contracts/{{contractId}}
+Authorization: Bearer {{token}}
+
+
+### ─── Milestones ─────────────────────────────────────────
+
+### Create milestone
+POST http://localhost:8081/api/contracts/{{contractId}}/milestones
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "UI Design & Wireframes",
+  "amount": 30000.00,
+  "dueDate": "2025-04-15",
+  "orderIndex": 1
+}
+
+### Create milestone 2
+POST http://localhost:8081/api/contracts/{{contractId}}/milestones
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Backend APIs",
+  "amount": 70000.00,
+  "dueDate": "2025-05-30",
+  "orderIndex": 2
+}
+
+### Get all milestones
+GET http://localhost:8081/api/contracts/{{contractId}}/milestones
+Authorization: Bearer {{token}}
+
+### Update milestone status
+PATCH http://localhost:8081/api/contracts/{{contractId}}/milestones/{{milestoneId}}/status?status=IN_PROGRESS
+Authorization: Bearer {{token}}
+
+
+### ─── Invoices ───────────────────────────────────────────
+
+### Generate invoice for milestone
+POST http://localhost:8081/api/invoices/generate/{{milestoneId}}
+Authorization: Bearer {{token}}
+
+### Get invoice by ID
+GET http://localhost:8081/api/invoices/{{invoiceId}}
+Authorization: Bearer {{token}}
+
+### Mark invoice as paid
+PATCH http://localhost:8081/api/invoices/{{invoiceId}}/status?status=PAID
+Authorization: Bearer {{token}}
+
+
+### ─── Portal (public - no auth) ─────────────────────────
+
+### View client portal
+GET http://localhost:8081/api/portal/{{publicToken}}
+### AI
+GET http://localhost:8081/api/ai/summary/{{contractId}}
+Authorization: Bearer {{token}}
+
+###PDF
+GET http://localhost:8081/api/invoices/{{invoiceId}}/pdf
+Authorization: Bearer {{token}}
